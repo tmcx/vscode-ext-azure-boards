@@ -1,0 +1,92 @@
+{
+  "name": "main-view",
+  "displayName": "main-view",
+  "description": "",
+  "version": "1.0.0",
+  "engines": {
+    "vscode": "^1.78.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "title": "Refresh",
+        "command": "cmd-refresh-my-work-items",
+        "icon": "resources/refresh.svg"
+      },
+      {
+        "title": "Clear configuration",
+        "command": "cmd-clear-configuration",
+        "icon": "resources/trash.svg"
+      },
+      {
+        "title": "Show work item details",
+        "command": "cmd-work-item-details"
+      }
+    ],
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "main-view",
+          "title": "Azure Boards",
+          "icon": "resources/icon.svg"
+        }
+      ]
+    },
+    "views": {
+      "main-view": [
+        {
+          "id": "tdp-my-work-items",
+          "name": "My Work Items"
+        },
+        {
+          "type": "webview",
+          "id": "set-configuration",
+          "name": "Set Configuration"
+        }
+      ]
+    },
+    "menus": {
+      "view/title": [
+        {
+          "command": "cmd-refresh-my-work-items",
+          "when": "view == tdp-my-work-items",
+          "group": "navigation"
+        },
+        {
+          "command": "cmd-clear-configuration",
+          "when": "view == set-configuration",
+          "group": "navigation"
+        }
+      ]
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "pretest": "npm run compile && npm run lint",
+    "lint": "eslint src --ext ts",
+    "test": "node ./out/test/runTest.js"
+  },
+  "devDependencies": {
+    "@types/glob": "^8.1.0",
+    "@types/mocha": "^10.0.1",
+    "@types/node": "16.x",
+    "@types/vscode": "^1.78.0",
+    "@typescript-eslint/eslint-plugin": "^5.59.1",
+    "@typescript-eslint/parser": "^5.59.1",
+    "@vscode/test-electron": "^2.3.0",
+    "eslint": "^8.39.0",
+    "glob": "^8.1.0",
+    "mocha": "^10.2.0",
+    "typescript": "^5.0.4"
+  },
+  "dependencies": {
+    "axios": "^1.4.0"
+  }
+}

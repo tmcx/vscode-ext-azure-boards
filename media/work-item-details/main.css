@@ -1,0 +1,53 @@
+body {
+  flex-direction: column;
+  display: flex;
+  row-gap: 4px;
+}
+
+input,
+select {
+  background: #e6e6e6;
+  line-height: 20px;
+  height: 20px;
+  border: none;
+}
+
+button {
+  background: #478215;
+  font-weight: 500;
+  font-size: 12px;
+  padding: 5px;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  align-self: end;
+}
+
+button:disabled {
+  cursor: default;
+  opacity: 0.5;
+}
+
+.credentials {
+  opacity: 0.5;
+  padding: 2px;
+}
+
+.credentials.valid {
+  border: solid 1px #478215;
+  background-color: #478215;
+}
+
+.credentials.invalid {
+  border: solid 1px #a00000;
+  background-color: #a00000;
+}
+
+.action {
+  display: flex;
+  justify-content: space-between;
+}
+
+h3 {
+  margin: 0px;
+}
